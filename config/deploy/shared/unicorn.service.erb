@@ -1,0 +1,26 @@
+#####################################################
+#
+# GitLab version    : 5.x - 7.x
+# Contributors      : davispuh, mtorromeo, axilleas, boeserwolf91, Stefan Tatschner (rumpelsepp)
+# Downloaded from   : https://gitlab.com/gitlab-org/gitlab-recipes/tree/master/init/systemd
+#
+####################################################
+
+[Unit]
+Description=<%= "Unicorn Server :: #{fetch(:profile)} :: #{fetch(:application)}" %>
+# Requires=redis.service
+# Wants=mysqld.service postgresql.service
+# After=redis.service mysqld.service postgresql.service
+
+[Service]
+User=<%= fetch(:deploy_user) %>
+WorkingDirectory=<%= "#{fetch(:deploy_to)}/current" %>
+SyslogIdentifier=<%= "unicorn-#{fetch(:profile)}-#{fetch(:application)}" %>
+PIDFile=<%= "#{fetch(:deploy_to)}/current/tmp/pids/unicorn.pid" %>
+
+Environment=RAILS_ENV=<%= fetch(:rails_env) %>
+
+ExecStart=<%= "/usr/bin/bundle exec \"unicorn_rails -c #{fetch(:deploy_to)}/current/config/unicorn.rb -E #{fetch(:rails_env)}\""  %>
+
+[Install]
+WantedBy=multi-user.target

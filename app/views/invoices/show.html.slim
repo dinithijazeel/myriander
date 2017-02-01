@@ -1,0 +1,27 @@
+- content_for :page_header
+  => fa('invoice')
+  | #{@invoice.type.underscore.humanize.titlecase} #{@invoice.number || 'Draft'}
+
+- content_for :page_body
+  = render 'invoice'
+
+- content_for :page_footer
+  = row
+    = col md: 6
+      => button_link "Invoices", invoices_path
+      = button_link "Customer", customer_path(@invoice.contact)
+    = col md: 6
+      = semantic_form_for @invoice do |f|
+        - if policy(:invoice).update?
+          - if @invoice.draft?
+            = hidden_field_tag :status, 'open'
+            => f.action :submit, label: 'Confirm Invoice', confirm: 'Confirm this invoice? It will no longer be editable.'
+            => button_link 'Edit', edit_invoice_path(@invoice), type: 'primary'
+          - elsif @invoice.paid?
+            = hidden_field_tag :status, 'closed'
+            => f.action :submit, label: 'Close Invoice'
+        = button_link 'View PDF', invoice_path(@invoice, format: :pdf), target: '_blank'
+
+- content_for :page_activity
+  = render partial: 'comments/comments', locals: {commentable: @invoice.contact, new_comment: @comment}
+  = render 'history', object: @invoice
