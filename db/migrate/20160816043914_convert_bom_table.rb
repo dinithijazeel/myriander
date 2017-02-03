@@ -1,7 +1,5 @@
 class ConvertBomTable < ActiveRecord::Migration
   def change
-    # Update proposals table
-    rename_column :proposals, :service_proposal_id, :services_proposal_id
     # Update line items table
     rename_column :line_items, :invoice_id, :bom_id
     # Update BOM table
