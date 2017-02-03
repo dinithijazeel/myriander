@@ -6,7 +6,7 @@ GIT
       rest-client (~> 1.6.7)
 
 PATH
-  remote: ~/Code/fractel-ruby
+  remote: ../../../home/vagrant/Code/fractel-ruby
   specs:
     fractel (0.0.1)
       httparty
@@ -322,4 +322,4 @@ DEPENDENCIES
   wkhtmltopdf-binary-edge
 
 BUNDLED WITH
-   1.12.4
+   1.14.3
