@@ -133,7 +133,6 @@ ActiveRecord::Schema.define(version: 20170126230423) do
     t.datetime "deleted_at"
   end
 
-  add_index "line_items", ["bom_id"], name: "index_line_items_on_bom_id", using: :btree
   add_index "line_items", ["product_id"], name: "index_line_items_on_product_id", using: :btree
 
   create_table "onboarding", force: :cascade do |t|
@@ -241,7 +240,6 @@ ActiveRecord::Schema.define(version: 20170126230423) do
   add_index "proposals", ["products_proposal_id"], name: "index_proposals_on_products_proposal_id", using: :btree
   add_index "proposals", ["proposal_date"], name: "index_proposals_on_proposal_date", using: :btree
   add_index "proposals", ["proposal_status"], name: "index_proposals_on_proposal_status", using: :btree
-  add_index "proposals", ["services_proposal_id"], name: "index_proposals_on_services_proposal_id", using: :btree
 
   create_table "stripe_transactions", force: :cascade do |t|
     t.string  "token",               limit: 255, null: false
@@ -340,7 +338,6 @@ ActiveRecord::Schema.define(version: 20170126230423) do
   add_foreign_key "credits", "boms", column: "invoice_id"
   add_foreign_key "credits", "payments"
   add_foreign_key "credits", "users", column: "creator_id"
-  add_foreign_key "line_items", "boms"
   add_foreign_key "line_items", "products"
   add_foreign_key "onboarding", "proposals"
   add_foreign_key "opportunities", "contacts"
@@ -348,7 +345,6 @@ ActiveRecord::Schema.define(version: 20170126230423) do
   add_foreign_key "payments", "users", column: "creator_id"
   add_foreign_key "products", "vendors"
   add_foreign_key "proposals", "boms", column: "products_proposal_id"
-  add_foreign_key "proposals", "boms", column: "services_proposal_id"
   add_foreign_key "proposals", "contacts"
   add_foreign_key "proposals", "users", column: "creator_id"
   add_foreign_key "proposals", "users", column: "last_editor_id"
