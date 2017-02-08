@@ -115,6 +115,7 @@ class Bom < ActiveRecord::Base
    5.times {puts "Hi there"};
    # json = JSON.generate [1, 2, {"a"=>3.141}, false, true, nil, 4..10]
      json = JSON.generate ["Client Number" => "000000", "DataYear"=>"2017"];
+   puts JSON.parse json;
     # my_hash = JSON.parse('{"hello": "goodbye"}')
 # puts my_hash["hello"] => "goodbye"
     
