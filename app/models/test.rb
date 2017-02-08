@@ -1,6 +1,6 @@
 class Test
 def self.getitems
-   5.times (puts "Hi there");
+   5.times {puts "Hi there"};
     # # Calculate taxes
      # federal_tax_amount = invoice_total * 0.12
     # state_tax_amount = invoice_total * 0.05
