@@ -110,6 +110,27 @@ class Bom < ActiveRecord::Base
 
   def self.get_rating_line_items
    5.times {puts "Hi there"};
+    
+    json = JSONBuilder::Compiler.generate do
+  name 'Garrett Bjerkhoel'
+  email 'spam@garrettbjerkhoel.com'
+  url user_url(user)
+  address do
+    street '1234 1st Ave'
+    city 'New York'
+    state 'NY'
+    zip 10065
+  end
+  key :nil, 'testing a custom key name'
+  skills do
+    ruby true
+    asp false
+  end
+  longstring do
+    # Could be a highly intensive process that only returns a string
+    '12345' * 25
+  end
+end
     # # Calculate taxes
      # federal_tax_amount = invoice_total * 0.12
     # state_tax_amount = invoice_total * 0.05
