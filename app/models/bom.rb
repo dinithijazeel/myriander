@@ -1,5 +1,5 @@
 class Bom < ActiveRecord::Base
-  require 'json' 
+  # require 'json' 
   
   #
   ## Behavior
