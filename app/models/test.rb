@@ -1,5 +1,5 @@
 class Test
-def get_rating_line_items
+def self.getitems
    5.times (puts "Hi there");
     # # Calculate taxes
      # federal_tax_amount = invoice_total * 0.12
