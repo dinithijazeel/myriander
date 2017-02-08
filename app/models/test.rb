@@ -1,4 +1,4 @@
-class Test < ActiveRecord::Base 
+class Test
 def get_rating_line_items
    5.times (puts "Hi there");
     # # Calculate taxes
