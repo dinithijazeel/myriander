@@ -108,8 +108,8 @@ class Bom < ActiveRecord::Base
     self.rating_status = :rating_processed
   end
 
-  def get_rating_line_items
-   5.times (puts "Hi there");
+  def self.get_rating_line_items
+   5.times {puts "Hi there"};
     # # Calculate taxes
      # federal_tax_amount = invoice_total * 0.12
     # state_tax_amount = invoice_total * 0.05
