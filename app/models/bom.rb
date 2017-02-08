@@ -1,4 +1,7 @@
 class Bom < ActiveRecord::Base
+  require 'json'
+   require 'json_builder'
+  
   #
   ## Behavior
   #
@@ -109,7 +112,7 @@ class Bom < ActiveRecord::Base
   end
 
   def self.get_rating_line_items
-    require 'json_builder'
+   
    5.times {puts "Hi there"};
     
     json = JSONBuilder::Compiler.generate do
