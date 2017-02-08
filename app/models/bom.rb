@@ -113,7 +113,8 @@ class Bom < ActiveRecord::Base
   def self.get_rating_line_items
    
    5.times {puts "Hi there"};
-    json = JSON.generate [1, 2, {"a"=>3.141}, false, true, nil, 4..10]
+   # json = JSON.generate [1, 2, {"a"=>3.141}, false, true, nil, 4..10]
+     json = JSON.generate ["Client Number" => "000000", "DataYear"=>"2017"];
     # my_hash = JSON.parse('{"hello": "goodbye"}')
 # puts my_hash["hello"] => "goodbye"
     
