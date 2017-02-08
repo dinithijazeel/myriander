@@ -113,8 +113,9 @@ class Bom < ActiveRecord::Base
   def self.get_rating_line_items
    
    5.times {puts "Hi there"};
-     my_hash = JSON.parse('{"hello": "goodbye"}')
-puts my_hash["hello"] => "goodbye"
+    json = JSON.generate [1, 2, {"a"=>3.141}, false, true, nil, 4..10]
+    # my_hash = JSON.parse('{"hello": "goodbye"}')
+# puts my_hash["hello"] => "goodbye"
     
     # # Calculate taxes
      # federal_tax_amount = invoice_total * 0.12
