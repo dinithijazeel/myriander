@@ -120,7 +120,7 @@ class Bom < ActiveRecord::Base
    puts JSON.parse json;
     
     # json_text = JSON.generate["id"=> 1,"name"=> "Foo","price"=> 123];
-   json1= {"ClientNumber": "000000000","BusinessUnit": "","ValidationKey": "13290031-F004-4F00-BMN3-E979D6749B88","DataYear": "2016","DataMonth": "06","CmplDataYear": "2016","CmplDataMonth": "06","TotalRevenue": "0","ClientTracking": "Certi","ResponseType": "D2","ResponseGroup": "00","ReturnFileCode": "0","STAN": ""};    
+   json1= [{"ClientNumber": "000000000","BusinessUnit": "","ValidationKey": "13290031-F004-4F00-BMN3-E979D6749B88","DataYear": "2016","DataMonth": "06","CmplDataYear": "2016","CmplDataMonth": "06","TotalRevenue": "0","ClientTracking": "Certi","ResponseType": "D2","ResponseGroup": "00","ReturnFileCode": "0","STAN": ""}];    
     puts json1;
     
     url  = "https://testapi.taxrating.net/Services/Communications/V01/SureTax.asmx/PostRequest"
