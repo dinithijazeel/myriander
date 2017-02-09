@@ -133,9 +133,10 @@ class Bom < ActiveRecord::Base
       response = site.post(json2,:content_type=>'application/json');
       puts JSON.parse(response.body);
     rescue RestClient::Exception => exception
-      puts 'API Error: Your request is not successful. If you are not able to debug this error properly, mail us at support@freshdesk.com with the follwing X-Request-Id'
-      puts "X-Request-Id : #{exception.response.headers[:x_request_id]}"
-      puts "Response Code: #{exception.response.code} \nResponse Body: #{exception.response.body} \n"
+     # puts 'API Error: Your request is not successful. If you are not able to debug this error properly, mail us at support@freshdesk.com with the follwing X-Request-Id'
+     # puts "X-Request-Id : #{exception.response.headers[:x_request_id]}"
+     # puts "Response Code: #{exception.response.code} \nResponse Body: #{exception.response.body} \n"
+      puts  {exception.response.message}
     end
     # my_hash = JSON.parse('{"hello": "goodbye"}')
 # puts my_hash["hello"] => "goodbye"
