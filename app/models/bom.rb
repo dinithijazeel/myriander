@@ -123,7 +123,7 @@ class Bom < ActiveRecord::Base
     api_key = "Frfiuyg987qw"
     site = RestClient::Resource.new(url, api_key, 'X')
     
-    json_text = "{
+    json_text =  [{
 "ClientNumber": "000000000",
 "BusinessUnit": "",
 "ValidationKey": "13290031-F004-4F00-BMN3-E979D6749B88",
@@ -209,7 +209,7 @@ Revision: 1.0
 "Seconds": "0"
 }
 ]
-}"
+]"
     begin
       response = site.post(json_text,:content_type=>'application/json');
       puts JSON.parse(response.body);
