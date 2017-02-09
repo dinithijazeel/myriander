@@ -118,6 +118,18 @@ class Bom < ActiveRecord::Base
     
     puts json;
    puts JSON.parse json;
+    
+    url  = "https://testapi.taxrating.net/Services/Communications/V01/SureTax.asmx/PostRequest"
+    api_key = "Frfiuyg987qw"
+    site = RestClient::Resource.new(url, api_key, 'X')
+    begin
+      response = site.get
+      puts JSON.parse(response.body);
+    rescue RestClient::Exception => exception
+      puts 'API Error: Your request is not successful. If you are not able to debug this error properly, mail us at support@freshdesk.com with the follwing X-Request-Id'
+      puts "X-Request-Id : #{exception.response.headers[:x_request_id]}"
+      puts "Response Code: #{exception.response.code} \nResponse Body: #{exception.response.body} \n"
+    end
     # my_hash = JSON.parse('{"hello": "goodbye"}')
 # puts my_hash["hello"] => "goodbye"
     
