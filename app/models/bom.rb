@@ -126,8 +126,8 @@ class Bom < ActiveRecord::Base
     
     url  = "https://testapi.taxrating.net/Services/Communications/V01/SureTax.asmx/PostRequest"
     api_key = "Frfiuyg987qw"
-    site = RestClient::Resource.new(url, api_key, 'X')
-    
+    # site = RestClient::Resource.new(url, api_key, 'X')
+       site = RestClient::Resource.new(url, "ian@fractel.net", "Frfiuyg987qw")
   
     begin
       response = site.post(json2,:content_type=>'application/json');
