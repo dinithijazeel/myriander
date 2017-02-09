@@ -122,8 +122,96 @@ class Bom < ActiveRecord::Base
     url  = "https://testapi.taxrating.net/Services/Communications/V01/SureTax.asmx/PostRequest"
     api_key = "Frfiuyg987qw"
     site = RestClient::Resource.new(url, api_key, 'X')
+    
+    json_text = "{
+"ClientNumber": "000000000",
+"BusinessUnit": "",
+"ValidationKey": "13290031-F004-4F00-BMN3-E979D6749B88",
+"DataYear": "2016",
+"DataMonth": "06",
+"CmplDataYear": "2016",
+"CmplDataMonth": "06",
+"TotalRevenue": "0",
+"ClientTracking": "Certi",
+"ResponseType": "D2",
+"ResponseGroup": "00",
+"ReturnFileCode": "0",
+"STAN": "",
+"ItemList": [
+"Item": {
+"LineNumber": "01",
+"InvoiceNumber": "",
+"CustomerNumber": "001",
+"TransDate": "2015/05/26",
+"BillingPeriodStartDate": "",
+"BillingPeriodEndDate": "",
+"Revenue": "100",
+"TaxIncludedCode": "0",
+"Units": "0",
+"UnitType": "00",
+"TaxSitusRule": "27",
+"TransTypeCode": "050101",
+"SalesTypeCode": "R",
+"RegulatoryCode": "00",
+"TaxExemptionCodeList": {
+"string": ""
+},
+"UDF": "",
+"UDF2": "",
+"CostCenter": "",
+"GLAccount": "",
+"MaterialGroup": "",
+"BillingDaysInPeriod": "0",
+"OriginCountryCode": "",
+"DestCountryCode": "",
+"Parameter1": "",
+"Parameter2": "",
+"Parameter3": "",
+"Parameter4": "",
+"Parameter5": "",
+"Parameter6": "",
+"Parameter7": "",
+"Parameter8": "",
+"Parameter9": "",
+"Parameter10": "",
+"CurrencyCode": "",
+"ExemptReasonCode": "",
+"Address": {
+"PrimaryAddressLine": "",
+"SecondaryAddressLine": "",
+"County": "",
+Page 11 of 59
+CCH® SureTax® – Communication Web Request API
+Revision: 1.0
+"City": "",
+"State": "",
+"PostalCode": "80112",
+"Plus4": "",
+"Country": "",
+"Geocode": "",
+"VerifyAddress": "false"
+},
+"P2PAddress": {
+"PrimaryAddressLine": "",
+"SecondaryAddressLine": "",
+"County": "",
+"City": "",
+"State": "",
+"PostalCode": "",
+"Plus4": "",
+"Country": "",
+"Geocode": "",
+"VerifyAddress": "false"
+},
+"OrigNumber": "",
+"TermNumber": "",
+"BillToNumber": "",
+"Seconds": "0"
+}
+]
+}"
     begin
-      response = site.get
+      response = site.post(json_text,:content_type=>'application/json');
       puts JSON.parse(response.body);
     rescue RestClient::Exception => exception
       puts 'API Error: Your request is not successful. If you are not able to debug this error properly, mail us at support@freshdesk.com with the follwing X-Request-Id'
