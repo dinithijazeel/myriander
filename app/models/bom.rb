@@ -119,11 +119,7 @@ class Bom < ActiveRecord::Base
     puts json;
    puts JSON.parse json;
     
-    json_text = JSON.generate[
-  "id"=> 1,
-  "name"=> "Foo",
-  "price"=> 123 
-];
+    json_text = JSON.generate["id"=> 1,"name"=> "Foo","price"=> 123];
     puts json_text;
     
     url  = "https://testapi.taxrating.net/Services/Communications/V01/SureTax.asmx/PostRequest"
