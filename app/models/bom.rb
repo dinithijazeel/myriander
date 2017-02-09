@@ -120,8 +120,9 @@ class Bom < ActiveRecord::Base
    puts JSON.parse json;
     
     # json_text = JSON.generate["id"=> 1,"name"=> "Foo","price"=> 123];
-   json1=JSON.generate["ClientNumber"=> "000000000","BusinessUnit"=> "","ValidationKey"=> "13290031-F004-4F00-BMN3-E979D6749B88","DataYear"=> "2016","DataMonth"=> "06","CmplDataYear"=> "2016","CmplDataMonth"=> "06","TotalRevenue"=> "0","ClientTracking"=> "Certi","ResponseType"=> "D2","ResponseGroup"=> "00","ReturnFileCode"=> "0","STAN"=> ""];    
-    puts json1;
+   #json1=JSON.generate["ClientNumber"=> "000000000","BusinessUnit"=> "","ValidationKey"=> "13290031-F004-4F00-BMN3-E979D6749B88","DataYear"=> "2016","DataMonth"=> "06","CmplDataYear"=> "2016","CmplDataMonth"=> "06","TotalRevenue"=> "0","ClientTracking"=> "Certi","ResponseType"=> "D2","ResponseGroup"=> "00","ReturnFileCode"=> "0","STAN"=> ""];    
+    json2={"ClientNumber"=> "000000000","BusinessUnit"=> "","ValidationKey"=> "13290031-F004-4F00-BMN3-E979D6749B88","DataYear"=> "2016","DataMonth"=> "06","CmplDataYear"=> "2016","CmplDataMonth"=> "06","TotalRevenue"=> "0","ClientTracking"=> "Certi","ResponseType"=> "D2","ResponseGroup"=> "00","ReturnFileCode"=> "0","STAN"=> ""}.to_json;    
+   puts json2;
     
     url  = "https://testapi.taxrating.net/Services/Communications/V01/SureTax.asmx/PostRequest"
     api_key = "Frfiuyg987qw"
@@ -129,7 +130,7 @@ class Bom < ActiveRecord::Base
     
   
     begin
-      response = site.post(json1,:content_type=>'application/json');
+      response = site.post(json2,:content_type=>'application/json');
       puts JSON.parse(response.body);
     rescue RestClient::Exception => exception
       puts 'API Error: Your request is not successful. If you are not able to debug this error properly, mail us at support@freshdesk.com with the follwing X-Request-Id'
