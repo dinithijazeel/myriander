@@ -29,6 +29,8 @@ Rails.application.config.x.email.onboarding_questionnaire = "#{Rails.root}/publi
 Rails.application.config.x.email.new_account_sender   = 'onboarding@fractel.net'
 Rails.application.config.x.email.new_account_subject  = 'Your new FracTEL account is ready to use'
 Rails.application.config.x.email.new_customer_subject = 'New FracTEL Account'
+Rails.application.config.x.email.payment_sender       = 'billing@fractel.net'
+Rails.application.config.x.email.payment_subject      = 'FracTEL Payment Received'
 #
 ## Proposals
 #
@@ -49,6 +51,7 @@ Rails.application.config.x.products.special_products = {
   :state_tax   => 'TX-FL-CST-01',
   :local_tax   => 'TX-LOC-CST-01',
   :shipping    => 'SHIPPING-01',
+  :prepaid     => 'PREPAID-01',
 }
 #
 ## Freshdesk Integration
@@ -62,3 +65,9 @@ Rails.application.config.x.freshdesk.groups_onboarding = 14000107507
 ## Portl Integration
 #
 Rails.application.config.x.portal.billing_endpoint = 'https://billing.fractel.net/cgi-bin/portal/fractelportal.cgi'
+#
+## SureTax Integration
+#
+Rails.application.config.x.suretax.url = 'https://testapi.taxrating.net/Services/Communications/V01/SureTax.asmx'
+Rails.application.config.x.suretax.api_key = 'dddcaf33-15e1-49af-a304-465651f75247'
+
